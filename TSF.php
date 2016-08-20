@@ -1,6 +1,6 @@
 <?php
 
-class Boost
+class TSF
 {
     /**
      * 递归包含文件
@@ -45,13 +45,13 @@ class Boost
 
     public static function init()
     {
-        Boost::includeAllFiles(TS_PATH);
+        self::includeAllFiles(TS_PATH);
         if(defined('APP_PATH'))
         {
-            Boost::includeAllFiles(APP_PATH . 'Model/');
-            Boost::includeAllFiles(APP_PATH . 'Api/');
-            Boost::includeAllFiles(APP_PATH . 'Common/');
-            Boost::includeAllFiles(APP_PATH . 'Controller/');
+            self::includeAllFiles(APP_PATH . 'Model/');
+            self::includeAllFiles(APP_PATH . 'Api/');
+            self::includeAllFiles(APP_PATH . 'Common/');
+            self::includeAllFiles(APP_PATH . 'Controller/');
             \Logger::setLogPath(APP_PATH . 'Log/');
         }
     }
