@@ -45,7 +45,11 @@ class TSF
 
     public static function init()
     {
-        self::includeAllFiles(TS_PATH);
+        if(defined('TSF_PATH'))
+        {
+            self::includeAllFiles(TSF_PATH);
+        }
+
         if(defined('APP_PATH'))
         {
             self::includeAllFiles(APP_PATH . 'Model/');
@@ -58,6 +62,3 @@ class TSF
 
 
 }
-
-//加载内核所有文件
-//Boost::includeAllFiles(dirname(__FILE__));

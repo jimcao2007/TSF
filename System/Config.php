@@ -1,6 +1,6 @@
 <?php
 return [
-    'SYSTEM' => [
+    'TSF' => [
         'ERR_CODE' => [
             'SUCCESS' => ['code'=>0,'info'=>'成功'],
             'ERR_PARAMS' => ['code'=>300,'info'=>'参数错误'],
@@ -13,6 +13,12 @@ return [
             'STATUS' =>'status',
             'INFO' => 'info',
             'DATA' => 'data'
+        ],
+
+        'Singleton' => [
+            'format'=>'FormatBase',
+            'http'=> 'HttpCgi',
+            
         ],
 
         'Format' => 'FormatBase',

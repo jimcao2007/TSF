@@ -28,7 +28,7 @@ class Dispatch
      * @param \HttpBase $http_obj
      * @return array
      */
-    public static function route($con,$act,$req_data,$post_body=null,$get=null,$http_obj=null,$swoole=null)
+    public static function route($con,$act,$req_data)
     {
         $con = self::filter($con);
         $act = self::filter($act);
@@ -38,8 +38,7 @@ class Dispatch
         if(!class_exists($con_class_name))
         {
             \Logger::flush();
-            $http_obj->setStatus(404);
-            return false;
+            return F::success();
         }
 
         $req_data = self::filter($req_data);
@@ -53,7 +52,7 @@ class Dispatch
             $post_body = self::filter($post_body);
         }
 
-        $controller_class = new $con_class_name($con,$act,$req_data,$post_body,$get,$http_obj);
+        $controller_class = new $con_class_name($con,$act,$req_data);
         if(!method_exists($controller_class,$act))
         {
             \Logger::flush();
