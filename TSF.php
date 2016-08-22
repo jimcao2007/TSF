@@ -50,6 +50,16 @@ class TSF
             self::includeAllFiles(TSF_PATH);
         }
 
+        $default_config_file = TSF_PATH . '/System/Config.php';
+        $default_config = include($default_config_file);
+        $app_config_file = APP_PATH . '/Config/Config.php';
+        if(file_exists($app_config_file))
+        {
+            $app_config = include($app_config_file);
+            $default_config = array_merge($default_config,$app_config);
+        }
+        S::$config = $default_config;
+
         if(defined('APP_PATH'))
         {
             self::includeAllFiles(APP_PATH . 'Model/');

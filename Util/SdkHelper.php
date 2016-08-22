@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: caoyongji
- * Date: 14-10-27
- * Time: 下午3:00
- */
 
 class SdkHelper
 {
