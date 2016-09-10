@@ -10,19 +10,67 @@ class S
     /**
      * @var \HttpBase
      */
-    public static $http;
+    protected static $http;
 
     /**
      * @var \swoole_server;
      */
-    public static $swoole;
+    protected static $swoole;
 
-    public static $config;
+    protected static $config;
     protected static $config_file;
     public static $format;
     protected static $model_objs;
 
 
+    public static function setHttp($http)
+    {
+        self::$http = $http;
+    }
+
+    public static function Http()
+    {
+        return self::$http;
+    }
+
+    public static function setSwoole($swoole)
+    {
+        self::$swoole = $swoole;
+    }
+
+    public static function swoole()
+    {
+        return self::$swoole;
+    }
+
+    public static function config($keys='')
+    {
+        if(empty($keys))
+        {
+            return self::$config;
+        }
+        $key_arr = explode('.',$keys);
+        $tmp = self::$config;
+        foreach ($key_arr as $k)
+        {
+            if(isset($tmp[$k]))
+            {
+                $tmp = $tmp[$k];
+            }
+            else{
+                return null;
+            }
+        }
+        return $tmp;
+    }
+
+    public static function setConfig($config)
+    {
+        self::$config = $config;
+    }
+
+
+    /*
     public static function init($config_file='')
     {
         $default_config_file = TSF_PATH . '/System/Config.php';
@@ -34,6 +82,7 @@ class S
         }
         self::$config = $default_config;
     }
+    */
 
     /**
      * @param $key
