@@ -3,12 +3,12 @@ class Controller
 {
     protected $con;
     protected $act;
-    protected $request;
-    public function __construct($con,$act,$request)
+    protected $params;
+    public function __construct($con,$act,$params)
     {
         $this->con = $con;
         $this->act = $act;
-        $this->request = $request;
+        $this->params = $params;
     }
 
     public function _init()
